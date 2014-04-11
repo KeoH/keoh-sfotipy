@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SECRET_KEY = secrets.SECRET_KEY
 
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -85,8 +85,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'http://localhost:3000/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+AUTH_USER_MODEL = 'user_profile.UserProfile'
