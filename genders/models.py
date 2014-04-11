@@ -7,5 +7,8 @@ class Gender(models.Model):
 
 	name = models.CharField(max_length=255)
 
-	albun = models.ForeignKey(Album)
-	artist = models.ForeignKey(Artist)
+	albun = models.ManyToManyField(Album,related_name='+', blank=True)
+	artist = models.ManyToManyField(Artist,related_name='+', blank=True)
+
+	def __unicode__(self):
+		return self.name

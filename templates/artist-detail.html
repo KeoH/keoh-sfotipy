@@ -1,14 +1,28 @@
+{% extends "base.html" %}
 {% load staticfiles %}
-<!doctype html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-	<title>Sfotipy</title>
-	<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-	<h1>Artist detail</h1>
-</body>
-</html>
+
+{% block title %}Artista: {{ artist.fullname }}{% endblock %}
+
+{% block content %}
+	{% include "header.html" with secction_name="Artist Profile"%}
+	<h2>{{ artist.fullname }}</h2>
+	<ul>
+		<li>
+			Tracks:
+			<ul>
+				{% for track in tracks %}
+				<li>{{ track.title }}</li>
+				{% endfor %}
+			</ul>
+		</li>
+		<li>
+			Albums:
+			<ul>
+				{% for album in albums %}
+				<li><img src="{{ MEDIA_URL }}{{ album.cover }}" alt="{{ album.title }}"> {{ album.title }}</li>
+				{% endfor %}
+			</ul>
+		</li>
+	</ul>
+{% endblock %}
+ 

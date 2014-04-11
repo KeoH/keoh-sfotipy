@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SECRET_KEY = secrets.SECRET_KEY
 
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -49,16 +49,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': secrets.DATABASE_NAME,                      
-        'USER': secrets.DATABASE_USER,                     
-        'PASSWORD': secrets.DATABASE_PASSWORD,                  
-        'HOST': '',                      
-        'PORT': '',                      
-    }
-}
+DATABASES = secrets.DEVELOPMENT_DATABASE
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

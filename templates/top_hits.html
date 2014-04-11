@@ -1,134 +1,24 @@
+{% extends "base.html" %}
 {% load staticfiles %}
-<!doctype html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width initial-scale=1 max-scale=1">
-	<title>Sfotipy</title>
-	<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-	<header class="header relative">
-		<a href="#" class="button-menu icon-menu"></a>
-		<nav class="menu">
-			<ul class="list">
-				<li class="items">
-					<a href="#">
-						Top Hits
-					</a>
-				</li>
-				<li class="items">
-					<a href="#">
-						Profile
-					</a>
-				</li>
-				<li class="items">
-					<a href="#">
-						Settings
-					</a>
-				</li>
-				<li class="items">
-					<a href="#">
-						My likes
-					</a>
-				</li>
-				<li class="items">
-					<a href="#">
-						Playlists
-					</a>
-				</li>
-				<li class="items">
-					<a href="#">
-						Logout
-					</a>
-				</li>
-			</ul>
-		</nav>
-		<div class="title">
-			<span>
-				Top Hits
-			</span>
-		</div>
-	</header>
+
+{% block title %}Top Hits{% endblock %}
+
+{% block content %}
+	{% include "header.html" with secction_name="Top Hits"%}
 	<section class="container">
-		<article class="song">
-			<figure class="image">
-				<img src="http://dummyimage.com/256x256&text=Este titulo+de+cancion+-+Autor+Molon" witdth="128px" height="128px" alt="Este titulo de cancion">
-			</figure>
-			<p class="title">
-				Este titulo de cancion
-			</p>
-			<p class="author">
-				Autor Molon
-			</p>
-		</article>
-		<article class="song">
-			<figure class="image">
-				<img src="http://dummyimage.com/256x256&text=Este titulo+de+cancion+-+Autor+Molon" witdth="128px" height="128px" alt="Este titulo de cancion">
-			</figure>
-			<p class="title">
-				Este titulo de cancion
-			</p>
-			<p class="author">
-				Autor Molon
-			</p>
-		</article>
-		<article class="song">
-			<figure class="image">
-				<img src="http://dummyimage.com/256x256&text=Este titulo+de+cancion+-+Autor+Molon" witdth="128px" height="128px" alt="Este titulo de cancion">
-			</figure>
-			<p class="title">
-				Este titulo de cancion
-			</p>
-			<p class="author">
-				Autor Molon
-			</p>
-		</article>
-		<article class="song">
-			<figure class="image">
-				<img src="http://dummyimage.com/256x256&text=Este titulo+de+cancion+-+Autor+Molon" witdth="128px" height="128px" alt="Este titulo de cancion">
-			</figure>
-			<p class="title">
-				Este titulo de cancion
-			</p>
-			<p class="author">
-				Autor Molon
-			</p>
-		</article>
-		<article class="song">
-			<figure class="image">
-				<img src="http://dummyimage.com/256x256&text=Este titulo+de+cancion+-+Autor+Molon" witdth="128px" height="128px" alt="Este titulo de cancion">
-			</figure>
-			<p class="title">
-				Este titulo de cancion
-			</p>
-			<p class="author">
-				Autor Molon
-			</p>
-		</article>
-		<article class="song">
-			<figure class="image">
-				<img src="http://dummyimage.com/256x256&text=Este titulo+de+cancion+-+Autor+Molon" witdth="128px" height="128px" alt="Este titulo de cancion">
-			</figure>
-			<p class="title">
-				Este titulo de cancion
-			</p>
-			<p class="author">
-				Autor Molon
-			</p>
-		</article>
-		<article class="song">
-			<figure class="image">
-				<img src="http://dummyimage.com/256x256&text=Este titulo+de+cancion+-+Autor+Molon" witdth="128px" height="128px" alt="Este titulo de cancion">
-			</figure>
-			<p class="title">
-				Este titulo de cancion
-			</p>
-			<p class="author">
-				Autor Molon
-			</p>
-		</article>
+		{% for track in tracks %}	
+			<article class="song">
+				<figure class="image">
+					<img src="{{ MEDIA_URL }}{{ track.album.cover }}" witdth="128px" height="128px" alt="{{ track.title }}">
+				</figure>
+				<p class="title">
+					{{ track.title }}
+				</p>
+				<p class="author">
+					{{ track.artist }}
+				</p>
+			</article>
+		{% endfor %}
+
 	</section>
-</body>
-</html>
+{% endblock %}

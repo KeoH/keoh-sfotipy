@@ -5,7 +5,7 @@ from artists.models import Artist
 class Album(models.Model):
 
 	title	= models.CharField(max_length=255)
-	cover	= models.ImageField(upload_to='albums')
+	cover	= models.ImageField(upload_to='albums', blank=True)
 	artist 	= models.ForeignKey(Artist)
 
 
