@@ -1,5 +1,73 @@
 @import "nib"
 @import "normalize"
+@import "iconfonts"
+
+gris_claro = #818181
+gris_oscuro = #333333
 
 body
-	background white
+	font-family 'Varela Round', sans-serif
+	font-size 16px
+a 
+	text-decoration none
+.container
+	font-size 0
+	padding 1.4rem
+	text-align center
+
+figure
+	margin 0
+
+.title
+	color gris_oscuro
+
+.author
+	color gris_claro
+
+.button-menu
+	color gris_oscuro
+	margin-left .5em
+	margin-top -10px
+	position absolute
+	top 50%
+
+.relative
+	position relative
+
+.header
+	height 3.5em
+	border-bottom 1px solid gris_claro
+	.title
+		font-size 1.2em
+		line-height 3.5em
+		margin 0
+		text-align center
+
+.song
+	display inline-block
+	font-size 1rem
+	margin-botton 1em
+	margin-right 1em
+	text-align left
+	width 8rem
+	&:nth-child(even)
+		margin-right 0
+	p 
+		margin .5em 0
+
+.menu
+	display none
+
+.background-logo
+	img
+		width 100%
+
+@media screen and (min-width:480px)
+
+	body
+		background red
+
+@media screen and (min-width:1000px)
+
+	body
+		background green

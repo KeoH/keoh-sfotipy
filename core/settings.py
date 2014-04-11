@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SECRET_KEY = secrets.SECRET_KEY
 
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -26,6 +26,10 @@ INSTALLED_APPS = (
     'artists',
     'tracks',
     'albums',
+    'user_profile',
+    'playlists',
+    'genders',
+    'usersong_counts',
 )
 
 MIDDLEWARE_CLASSES = (
