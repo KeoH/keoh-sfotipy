@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block title %}Artista: {{ artist.fullname }}{% endblock %}
 
@@ -19,7 +19,7 @@
 			Albums:
 			<ul>
 				{% for album in albums %}
-				<li><img src="{{ MEDIA_URL }}{{ album.cover }}" alt="{{ album.title }}"> {{ album.title }}</li>
+				<li><img src="{% get_media_prefix %}{{ album.cover }}" alt="{{ album.title }}"> {{ album.title }}</li>
 				{% endfor %}
 			</ul>
 		</li>

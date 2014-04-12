@@ -1,4 +1,5 @@
 import os
+import socket
 import core.secrets as secrets
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -64,11 +65,32 @@ USE_L10N = True
 
 USE_TZ = True
 
+if os.name != "nt":
+    import fcntl
+    import struct
+    def get_interface_ip(ifname):
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        return socket.inet_ntoa(fcntl.ioctl(
+                s.fileno(),
+                0x8915,  # SIOCGIFADDR
+                struct.pack('256s', ifname[:15])
+            )[20:24])
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
+def get_lan_ip():
+    ip = socket.gethostbyname(socket.gethostname())
+    if ip.startswith("127.") and os.name != "nt":
+        interfaces = ["eth0","eth1","eth2","wlan0","wlan1","wifi0","ath0","ath1","ppp0"]
+        for ifname in interfaces:
+            try:
+                ip = get_interface_ip(ifname)
+                break;
+            except IOError:
+                pass
+    return ip
 
-STATIC_URL = 'http://localhost:3000/'
+MY_URL = get_lan_ip()
+
+STATIC_URL = 'http://'+MY_URL+':3000/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'estaticos')
 
@@ -76,7 +98,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-MEDIA_URL = 'http://localhost:3000/media/'
+MEDIA_URL = 'http://'+MY_URL+':3000/media/'
 
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 

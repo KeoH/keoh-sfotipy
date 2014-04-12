@@ -1,9 +1,11 @@
 @import "nib"
 @import "normalize"
-@import "iconfonts"
+@import "iconfonts.styl"
 
 gris_claro = #818181
 gris_oscuro = #333333
+gris_mas_claro = #f4f4f4
+fucsia = #BD255B
 
 body
 	font-family 'Varela Round', sans-serif
@@ -17,6 +19,42 @@ a
 
 figure
 	margin 0
+img
+	vertical-align top
+
+.center-block
+	margin 0 auto
+
+.center-text
+	text-align center
+
+.right-text
+	text-align right
+
+.left-text
+	text-align left
+
+.padding
+	padding 1em
+
+.padding-tb
+	padding 1em 0
+
+.actions
+	background rgba(black, .3)
+	bottom 0
+	left 0
+	position absolute
+	right 0
+
+.action
+	color white
+	font-size 1.2em
+	margin-right .5em
+	&:last-child
+		margin-right 0
+	&.gray
+		color gris_claro
 
 .title
 	color gris_oscuro
@@ -50,6 +88,7 @@ figure
 	margin-right 1em
 	text-align left
 	width 8rem
+	vertical-align top
 	&:nth-child(even)
 		margin-right 0
 	p 
@@ -61,13 +100,69 @@ figure
 .background-logo
 	img
 		width 100%
+.playing
+	display block
+	&.small
+		width 20em
+
+.progress
+	margin 1em 0
+	position relative
+	.min
+	.max
+		font-size .8em
+		position absolute
+	.min
+		left 0
+		top -5px
+	.max
+		right 0
+		top -5px
+	.total
+		background gris_claro
+		border-radius 5px
+		height 5px
+		width 75%
+		margin 0 auto
+	.state
+		background fucsia
+		border-radius 5px
+		height 5px
+		position relative
+		width 30%
+	.circle
+		background gris_oscuro
+		border-radius 50%
+		height 10px
+		position absolute
+		right 0
+		top -2px
+		width 10px
 
 @media screen and (min-width:480px)
 
 	body
-		background red
+		background gris_mas_claro
+	.song
+		&:nth-child(even)
+			margin-right 1em
+
+	.playing
+		&.medium
+			width auto
+	.image
+		img
+			width 100%
+			height auto
 
 @media screen and (min-width:1000px)
 
+	// AVATAR http://192.168.1.36:3000/media/user_profile/avatar.jpeg
 	body
-		background green
+		background white
+
+	.button-menu
+		display none
+	.header
+		.title
+			display none
