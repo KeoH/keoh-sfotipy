@@ -6,7 +6,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SECRET_KEY = secrets.SECRET_KEY
 
-DEBUG = True
+IN_PRODUCTION = True
+
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -98,10 +100,31 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-MEDIA_URL = 'http://'+MY_URL+':3000/media/'
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
+)
 
-MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+
+if IN_PRODUCTION:
+    S3_URL = 'http://keoh-sfotypy.s3.amazonaws.com/'
+    MEDIA_URL = S3_URL + 'media/'
+else:
+    MEDIA_URL = 'http://'+MY_URL+':3000/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 AUTH_USER_MODEL = 'user_profile.UserProfile'
+
+
+if IN_PRODUCTION:
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+    AWS_ACCESS_KEY_ID = secrets.AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY = secrets.AWS_SECRET_ACCESS_KEY
+    AWS_STORAGE_BUCKET_NAME = secrets.AWS_STORAGE_BUCKET_NAME

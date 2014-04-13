@@ -13,7 +13,7 @@ class Album(models.Model):
 		return self.title
 
 	def image_cover(self):
-		html = '<figure><img width="60px" height="60px" src="%s/%s"></figure>' % (media,self.cover)
+		html = '<figure><img width="60px" height="60px" src="%s"></figure>' % (self.cover.url)
 		return html
 
 	image_cover.allow_tags = True

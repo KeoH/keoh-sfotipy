@@ -1,4 +1,4 @@
-{% load static %}
+{% load static from staticfiles %}
 <header class="header relative">
 	<div class="logo">
 		<div class="wrap center-block">
@@ -7,7 +7,7 @@
 			</figure>
 			<div class="user right">
 				<figure class="avatar round left">
-					<img src="http://192.168.1.36:3000/media/user_profile/avatar.jpeg" alt="avatar" width="38px" height="38px">
+					<img src="{{ user.avatar.url }}" alt="avatar" width="38px" height="38px">
 				</figure>
 				<span class="left username">@Pacomanz</span>
 			</div>

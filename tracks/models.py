@@ -3,7 +3,7 @@ from django.db import models
 from albums.models import Album
 from artists.models import Artist
 
-from core.settings import MEDIA_URL as media
+from core.settings import STATIC_URL as media
 
 class Track(models.Model):
 
@@ -17,7 +17,7 @@ class Track(models.Model):
 		return self.title
 
 	def audio_track(self):
-		html = '<audio controls preload="none"><source src="%s%s" type="audio/mpeg"></audio>' % (media, self.track_field)	
+		html = '<audio controls preload="none"><source src="%s" type="audio/mpeg"></audio>' % (self.track_field.url)	
 		return html
 
 	audio_track.allow_tags = True
