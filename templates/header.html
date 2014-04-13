@@ -1,52 +1,27 @@
 {% load static %}
 <header class="header relative">
 	<div class="logo">
-		<figure class="image">
-			<img src="{% static 'img/logo.png' %}" alt="">
-		</figure>
-		<div class="search">
-			search
-		</div>
-		<div class="user">
-			@Pacomanz
+		<div class="wrap center-block">
+			<figure class="image isotipo left">
+				<img src="{% static 'img/logo.png' %}" alt="Sfotipy">
+			</figure>
+			<div class="user right">
+				<figure class="avatar round left">
+					<img src="http://192.168.1.36:3000/media/user_profile/avatar.jpeg" alt="avatar" width="38px" height="38px">
+				</figure>
+				<span class="left username">@Pacomanz</span>
+			</div>
+			<div class="search right">
+				<form action="" class="relative">
+					<span class="icon-search search-icon"></span>
+					<input type="text" placeholder="Buscar ..." class="input">
+					<span class="close-icon">x</span>
+				</form>
+			</div>
 		</div>
 	</div>
-	<a href="#" class="button-menu icon-menu"></a>
-	<nav class="menu">
-		<ul class="list">
-			<li class="items">
-				<a href="#">
-					Top Hits
-				</a>
-			</li>
-			<li class="items">
-				<a href="#">
-					Profile
-				</a>
-			</li>
-			<li class="items">
-				<a href="#">
-					Settings
-				</a>
-			</li>
-			<li class="items">
-				<a href="#">
-					My likes
-				</a>
-			</li>
-			<li class="items">
-				<a href="#">
-					Playlists
-				</a>
-			</li>
-			<li class="items">
-				<a href="#">
-					Logout
-				</a>
-			</li>
-		</ul>
-	</nav>
-	<div class="title">
+	{% include "menu.html" %}
+		<div class="title">
 		<span>
 			{{secction_name}}
 		</span>

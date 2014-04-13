@@ -7,11 +7,14 @@
 	<title>Sfotipy - {% block title %}{% endblock %}</title>
 	<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<script type="text/javascript" src="{% static 'lib/jquery.js' %}"></script>
 </head>
 <body>
+
 	{% block content %}
 	{% endblock %}
 	{% block javascript %}
 	{% endblock %}
+{% include 'menu_desplegable.html' %}
 </body>
 </html>

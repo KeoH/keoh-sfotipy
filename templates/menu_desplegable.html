@@ -1,0 +1,108 @@
+<div class="slide-in">
+	<a href="#" id="boton-interior" class="icon-menu"></a>
+	<div id="lateral-search">
+		<form  action="">
+			<input type="text" placeholder=" Buscar ...">
+			<span class="icon-search"></span>
+		</form>
+		
+	</div>
+	<nav class="menu lateral">
+		<ul class="list">
+			<li class="items">
+				<a href="{% url 'tophits' %}">
+					Top Hits
+				</a>
+			</li>
+			<li class="items">
+				<a href="#">
+					Profile
+				</a>
+			</li>
+			<li class="items">
+				<a href="#">
+					Settings
+				</a>
+			</li>
+			<li class="items">
+				<a href="#">
+					My likes
+				</a>
+			</li>
+			<li class="items">
+				<a href="#">
+					Playlists
+				</a>
+			</li>
+			<li class="items">
+				<a href="#">
+					Logout
+				</a>
+			</li>
+		</ul>
+	</nav>
+</div>
+
+<script>
+	$(document).on('ready', function(e){
+
+		var startX, curX, startY, curY;
+		var newXScroll, newYScroll, getXScroll;
+
+		function sideBarHeight() {
+
+			var docHeight = $(document).height();
+			var winHeight = $(window).height();
+
+			$('.slide-in').height(winHeight);
+			$('.main-container').height(winHeight);
+			$('.container').height($('.container').height());
+		}
+
+		$(window).resize(function(){
+			sideBarHeight();
+		});
+
+		sideBarHeight();
+	});
+
+	function runAnimation() {
+ 
+	    if(outIn == 'out') {
+	         
+	        $('.slide-in').toggleClass('on');
+	        $('.main-container').toggleClass('on');
+	        //$('.button-menu').toggleClass('on');
+	        outIn = 'in';
+	         
+	    } else if(outIn == 'in') {
+	     
+	        $('.slide-in').toggleClass('on');  
+	        $('.main-container').toggleClass('on');
+	        //$('.button-menu').toggleClass('on');
+	        outIn = 'out';
+	         
+	    }
+ 
+	}
+	 
+	$('.button-menu').on('click',function(e) {
+		console.log(e);
+		e.preventDefault();
+	    $('.slide-in').toggleClass('on');      
+	    $('.main-container').toggleClass('on');
+	    //$('.button-menu').toggleClass('oculto');
+	    //$('#boton-interior').toggleClass('visible');
+	    console.log("Toogle de boton 1");
+	});
+
+	$('#boton-interior').on('click',function(e) {
+		e.preventDefault();
+	    $('.slide-in').toggleClass('on');      
+	    $('.main-container').toggleClass('on');
+	    //$('.button-menu').toggleClass('visble');
+	    //$('#boton-interior').toggleClass('oculto');
+	    console.log("Toogle de boton 2");
+	});
+	console.log("Terminada la carga");
+</script>

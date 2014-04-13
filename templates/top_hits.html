@@ -5,20 +5,23 @@
 
 {% block content %}
 	{% include "header.html" with secction_name="Top Hits"%}
-	<section class="container">
-		{% for track in tracks %}	
-			<article class="song">
-				<figure class="image">
-					<img src="{% get_media_prefix %}{{ track.album.cover }}" witdth="128px" height="128px" alt="{{ track.title }}">
-				</figure>
-				<p class="title">
-					{{ track.title }}
-				</p>
-				<p class="author">
-					{{ track.artist }}
-				</p>
-			</article>
-		{% endfor %}
-
-	</section>
+	<div class="main-container">
+		<section class="container">
+			{% for track in tracks %}
+				<a href="{% url 'playing' %}">	
+					<article class="song">
+						<figure class="image">
+							<img src="{% get_media_prefix %}{{ track.album.cover }}" witdth="115" height="115" alt="{{ track.title }}">
+						</figure>
+						<p class="title">
+							{{ track.title }}
+						</p>
+						<p class="author">
+							{{ track.artist }}
+						</p>
+					</article>
+				</a>
+			{% endfor %}
+		</section>
+	</div>
 {% endblock %}

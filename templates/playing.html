@@ -6,42 +6,84 @@
 {% block content %}
 	{% include "header.html" with secction_name="Playing"%}
 
-	<secction class="playing small medium center-block">
-		<figure class="image relative">
-			<img src="http://192.168.1.36:3000/media/albums/tmara-laurel02.jpg" width="320px" height="320px" alt="Tamara Laurel - Ligthning">
-			<div class="actions padding right-text">
-				<a href="#" class="action icon-add"></a>
-				<a href="#" class="action icon-love"></a>
-				<a href="#" class="action icon-share"></a>
-			</div>
-		</figure>
-		<div class="padding">
-			<div class="progress">
-				<span class="min">0:52</span>
-				<div class="total">
-					<div class="state">
-						<div class="circle">
-							
+	<secction class="playing small medium large">
+		<div class="music">
+			<figure class="image relative">
+				<img src="http://192.168.1.36:3000/media/albums/tmara-laurel02.jpg" width="320px" height="320px" alt="Tamara Laurel - Ligthning">
+				<div class="actions padding right-text">
+					<a href="#" class="action icon-add"></a>
+					<a href="#" class="action icon-love"></a>
+					<a href="#" class="action icon-share"></a>
+				</div>
+			</figure>
+			<div class="padding">
+				<div class="progress">
+					<span class="min">0:52</span>
+					<div class="total">
+						<div class="state">
+							<div class="circle">
+								
+							</div>
 						</div>
 					</div>
+					<span class="max">4:12</span>
 				</div>
-				<span class="max">4:12</span>
+				<div class="description center-text">
+					<p class="name">
+						Ligthning
+					</p>
+					<p class="author">
+						Tamara Laurel
+					</p>
+				</div>
+				<div class="play center-text padding-tb">
+					<a href="#" class="action gray icon-prev"></a>
+					<a href="#" class="action gray icon-play"></a>
+					<a href="#" class="action gray icon-next"></a>
+					<a href="#" class="action gray icon-random"></a>
+					<a href="#" class="action gray icon-vol"></a>
+				</div>
 			</div>
-			<div class="description center-text">
-				<p class="name">
-					Ligthning
-				</p>
-				<p class="author">
-					Tamara Laurel
-				</p>
-			</div>
-			<div class="play center-text padding-tb">
-				<a href="#" class="action gray icon-prev"></a>
-				<a href="#" class="action gray icon-play"></a>
-				<a href="#" class="action gray icon-next"></a>
-				<a href="#" class="action gray icon-random"></a>
-				<a href="#" class="action gray icon-vol"></a>
-			</div>
+		</div>
+		<div class="playlist right">
+			<p class="name">
+				Ligthning
+			</p>
+			<p class="author">
+				Tamara Laurel
+			</p>
+			<ul class="list">
+				<li class="item">
+					<span>
+						Pathetic
+					</span>
+					<span class="right">
+						<a href="#" class="action icon-add gray"></a>
+						<a href="#" class="action icon-love gray"></a>
+						<a href="#" class="action icon-share gray"></a>
+					</span>
+				</li>
+				<li class="item">
+					<span>
+						Lightning
+					</span>
+					<span class="right">
+						<a href="#" class="action icon-add gray"></a>
+						<a href="#" class="action icon-love gray"></a>
+						<a href="#" class="action icon-share gray"></a>
+					</span>
+				</li>
+				<li class="item">
+					<span>
+						Sweet
+					</span>
+					<span class="right">
+						<a href="#" class="action icon-add gray"></a>
+						<a href="#" class="action icon-love gray"></a>
+						<a href="#" class="action icon-share gray"></a>
+					</span>
+				</li>
+			</ul>
 		</div>
 	</secction>
 
