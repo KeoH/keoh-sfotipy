@@ -20,11 +20,17 @@
 			</div>
 		</div>
 	</div>
+	<a href="#" class="button-menu icon-menu {% if secction_name == 'Artist Profile' %}white-text{% endif %}"></a>
 	{% include "menu.html" %}
 		<div class="title">
 			{% if secction_name == 'Artist Profile' %}
 				<figure class="artist-foto">
-					<img src="http://dummyimage.com/400x150&text={{ artist.fullname }}" alt="">
+					{% if artist.profile_image %}
+					<img src="{{ artist.profile_image.url }}" alt="Artist photo">
+					{% else %}
+					<img src="http://dummyimage.com/400x150&text=." alt="This artist has no photo">
+					{% endif %}
+					<span>{{artist.fullname}}</span>
 				</figure>
 			{% endif %}
 		<span>
