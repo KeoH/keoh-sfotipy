@@ -6,7 +6,7 @@ from core.settings import MEDIA_URL as media
 class Album(models.Model):
 
 	title	= models.CharField(max_length=255)
-	cover	= models.ImageField(upload_to='albums', blank=True)
+	cover	= models.ImageField(upload_to='albums/', blank=True)
 	artist 	= models.ForeignKey(Artist)
 
 	def __unicode__(self):

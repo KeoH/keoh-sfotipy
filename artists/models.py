@@ -30,6 +30,8 @@ class Artist(models.Model):
 	biography	= models.TextField(blank=True)
 	country		= models.ForeignKey(Country, blank=True)
 
+	profile_image = models.ImageField(upload_to='artist/',blank=True, null=True)
+
 	is_group	= models.BooleanField(default=False)
 
 	def fullname(self):

@@ -22,6 +22,11 @@
 	</div>
 	{% include "menu.html" %}
 		<div class="title">
+			{% if secction_name == 'Artist Profile' %}
+				<figure class="artist-foto">
+					<img src="http://dummyimage.com/400x150&text={{ artist.fullname }}" alt="">
+				</figure>
+			{% endif %}
 		<span>
 			{{secction_name}}
 		</span>

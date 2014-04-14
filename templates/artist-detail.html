@@ -19,7 +19,7 @@
 			Albums:
 			<ul>
 				{% for album in albums %}
-				<li><img src="{% get_media_prefix %}{{ album.cover }}" alt="{{ album.title }}"> {{ album.title }}</li>
+				<li><img src="{{ album.cover.url }}" alt="{{ album.title }}"> {{ album.title }}</li>
 				{% endfor %}
 			</ul>
 		</li>

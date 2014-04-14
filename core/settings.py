@@ -6,9 +6,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SECRET_KEY = secrets.SECRET_KEY
 
-IN_PRODUCTION = True
+IN_PRODUCTION = False
 
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -112,7 +112,7 @@ if IN_PRODUCTION:
     MEDIA_URL = S3_URL + 'media/'
 else:
     MEDIA_URL = 'http://'+MY_URL+':3000/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
