@@ -1,9 +1,10 @@
-keoh-sfotipy
+[KeoH Sfotipy](http://keoh-sfotipy.herokuapp.com)
 ============
 
-Mi versión de Sfotipy para el curso de BackEnd de Mejorando.la
+This is my version of Sfotipy, from [Mejorando.la](http://mejorando.la) Profesional Backend Course :)
 
 Django + South + Backbone + Django REST Framework
 
-WORK IN PROGRESS
-============
+### Work in progress ###
+
+You can see the website progress here [http://keoh-sfotipy.herokuapp.com](http://keoh-sfotipy.herokuapp.com)
