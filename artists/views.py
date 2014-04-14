@@ -15,6 +15,6 @@ class ArtistDetailView(DetailView):
 	def get_context_data(self, **kwargs):
 		context = super(ArtistDetailView, self).get_context_data(**kwargs)
 		artist = kwargs['object'] 
+		context['tophits'] = Track.objects.filter(artist=artist.pk)[:3]
 		context['albums'] = Album.objects.filter(artist=artist.pk)
-		context['tracks'] = Track.objects.filter(artist=artist.pk)
 		return context

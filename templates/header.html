@@ -9,7 +9,7 @@
 				<figure class="avatar round left">
 					<img src="{{ user.avatar.url }}" alt="avatar" width="38px" height="38px">
 				</figure>
-				<span class="left username">@Pacomanz</span>
+				<span class="left username">@{{user.username}}</span>
 			</div>
 			<div class="search right">
 				<form action="" class="relative">
@@ -34,7 +34,11 @@
 				</figure>
 			{% endif %}
 		<span>
+			{% if secction_name == 'Artist Profile' %}
+			Top hits
+			{% else %}
 			{{secction_name}}
+			{% endif %}
 		</span>
 	</div>
 </header>

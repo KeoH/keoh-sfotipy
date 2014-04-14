@@ -5,24 +5,39 @@
 
 {% block content %}
 	{% include "header.html" with secction_name="Artist Profile"%}
-	<h2>{{ artist.fullname }}</h2>
-	<ul>
-		<li>
-			Tracks:
-			<ul>
-				{% for track in tracks %}
-				<li>{{ track.title }}</li>
-				{% endfor %}
-			</ul>
-		</li>
-		<li>
-			Albums:
-			<ul>
-				{% for album in albums %}
-				<li><img src="{{ album.cover.url }}" alt="{{ album.title }}"> {{ album.title }}</li>
-				{% endfor %}
-			</ul>
-		</li>
-	</ul>
+	<section class="artist-hits">
+		<ul>
+			{% for track in tophits %}
+			<li>
+				<figure class="album-thumb">
+					<img src="{{ track.album.cover.url }}" alt="">
+				</figure>
+				<p>{{ track.title }}</p>
+			</li>
+			{% endfor %}
+		</ul>
+	</section>
+	<section class="artist-album">
+		<header>
+			<p>Albums</p>
+			<div class="submenu right-text">
+				<a href="#" class="icon-menu"></a>
+				<a href="#" class="icon-menu"></a>
+			</div>
+		</header>
+		{% for album in albums %}
+		<article class="album">
+			<figure class="image">
+				<img src="{{ album.cover.url }}" alt="{{ album.title }}">
+			</figure>
+			<p class="title">
+				{{ album.title }}
+			</p>
+			<p class="author">
+				{{ album.artist.fullname }}
+			</p>
+		</article>
+		{% endfor %}
+	</section>
 {% endblock %}
  
