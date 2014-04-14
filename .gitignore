@@ -3,3 +3,4 @@ env/
 estaticos/
 *.pyc
 core/secrets.py
+migrations/
