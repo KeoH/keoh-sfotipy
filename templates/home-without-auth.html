@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}Toda la música que te gusta, en todas partes{% endblock %}
+
+{% block content %}
+	<section class="home-without-loggin">
+		<div class="bg-img">
+			<figure class="bg-image">
+				<div class="spacer"></div>
+				<img src="{% static 'img/logo-home.png' %}" alt="sfotipy logo">
+				<p>
+					Toda la música que te gusta, en todas partes
+				</p>
+				<div class="login-social facebook">
+					<a href="#"><span class="icon-facebook"></span><span class="slash">|</span> Conéctate con Facebook</a>
+				</div>
+				<div class="spacer2"></div>
+				<div class="login-social twitter">
+					<a href="#"><span class="icon-twitter"></span><span class="slash">|</span> Conéctate con Twitter</a>
+				</div>
+			</figure>
+		</div>
+		<div class="login">
+			<ul>
+				<li>
+					<a href="#">
+						Acceder
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						Crea una cuenta
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		{% include "signin.html" %}
+
+		{% include "signup.html" %}
+
+		<div class="home-info">
+			<figure>
+				<img src="{% static 'img/home-img01.png' %}" alt="escucha">
+			</figure>
+			<div>
+				<p>Escucha</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+				</p>
+			</div>
+			<figure>
+				<img src="{% static 'img/home-img02.png' %}" alt="comparte">
+			</figure>
+			<div>
+				<p>Comparte</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+				</p>
+			</div>
+			<figure>
+				<img src="{% static 'img/home-img03.png' %}" alt="crea y sigue playlists">
+			</figure>
+			<div>
+				<p>Crea y sigue playlists</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+				</p>
+			</div>
+			<div>
+				Empieza a escuchar ya
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="footer">
+			<div class="left"><a href="#" class="icon-sfotipy"></a></div>
+			<div class="right"><a href="#">about us</a><a href="#">legal</a></div>
+		</div>
+		
+	</footer>
+{% endblock %}

@@ -18,7 +18,7 @@ urlpatterns = patterns('',
 
     url(r'^artists/', include('artists.urls')),
     url(r'^albums/', include('albums.urls')),
-    url(r'^profile/', include('user_profile.urls')),
+    url(r'^profile/', include('user_profile.urls', namespace='profile')),
     url(r'^playlist/', include('playlists.urls')),
 
 )

@@ -115,7 +115,14 @@ else:
     MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 
 
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader'
+)
+
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+
 
 AUTH_USER_MODEL = 'user_profile.UserProfile'
 
