@@ -6,6 +6,11 @@ gris_claro = #818181
 gris_oscuro = #333333
 gris_mas_claro = #f0f0f0
 fucsia = #BD255B
+azul_facebook = #4b66a0
+azul_facebook_oscuro = #243554
+azul_twitter = #8addf6
+azul_twitter_oscuro = #478bb5
+rosa = #cc2f6f
 
 body
 	font-family 'Varela Round', sans-serif
@@ -334,8 +339,165 @@ img
 				width 100%
 				height auto
 
+.home-without-loggin
+	
+	.bg-img
+		background black
+		background-image url('../img/home-bg.png')
+		background-repeat no-repeat
+		width 100%
+		height 500px
+		text-align center
+		.spacer
+			background transparent
+			height 100px
+		.spacer2
+			background transparent
+			height 10px
+	.bg-image
+		p
+			font-size 1.6em
+
+			margin 1.1em auto
+			color white
+			width 80%
+			padding-bottom .3em
+		
+		.login-social
+			margin 0 auto
+			width 265px
+			height 50px
+			border-radius .5em
+			padding .5em .5em
+			margin-botton .5em
+			display block
+			font-size 1.1em
+			text-align left
+
+			.icon-facebook
+				font-size 1.5em
+			.icon-twiter
+				font-size 1.5em
+
+			a 
+				color white
+				padding-top 4%
+				display block
+			.slash
+				
+				padding 0 .2em
+				font-size 1.7em
+
+.twitter 
+	background azul_twitter
+	.slash
+		color azul_twitter_oscuro
+
+.facebook 
+	background azul_facebook
+	.slash
+		color azul_facebook_oscuro
+
+.login 
+	margin .5em 1em
+	text-align center
+	li
+		margin 0
+		
+		display inline-block
+		vertical-align top
+		width 42%
+		padding 2%
+		&:first-child
+			border-right 2px solid gris_claro
+		a
+			color gris_claro
+			font-size 1.1em
+			
+.home-info
+	img
+		width 100%
+	p
+		text-align center
+		color gris_oscuro
+		font-size 22px
+		&:last-child
+			color gris_claro
+			font-size 19px
+	div
+		padding 1em 0
+		&:last-child
+			border-top 1px solid gris_mas_claro
+			width 80%
+			margin 0 auto
+			color gris_claro
+			text-align center
+			font-size 22px
+			padding-bottom 2em
+.footer
+	background gris_oscuro
+	height 3em
+	padding-top 1.5em
+	a
+		color white
+		font-size 1.1em
+		padding .4em
+	.left
+		a
+			font-size 1.5em
+
+.login-form
+	padding 1em
+	color gris_claro
+	p
+		font-size 22px
+		color gris_oscuro
+		text-align center
+	form 
+		
+		text-align center
+		div
+			display block
+			position relative
+			margin 0 auto
+			width 300px
+
+		span
+			position absolute
+			left 1.2em
+			top 1.5em
+		
+	input
+		margin .5em 0
+		font-size 18px
+		width 230px
+
+	.form-button
+		width 285px
+		height 2.5em
+		border-radius 5px
+		border 1px solid fucsia
+		background rosa
+		color white
+		font-size 24px
+		padding 0
+
 
 @media screen and (min-width:480px)
+
+	.home-info
+		p
+			font-size 30px
+			&:last-child
+				color gris_claro
+				font-size 22px
+		div
+			padding 2em 0 4em 0
+
+	.login-form
+		form
+			span
+				left 6%
 
 	.artist-hits
 		
@@ -358,6 +520,18 @@ img
 		.album
 			width 12rem
 			font-size 1.3rem
+
+	.home-without-loggin
+		.bg-image
+			.login-social
+				height 50px
+				font-size 1.25em
+				width 315px
+				a
+					padding-top 2.6%
+				.slash
+					font-size 1.5em
+					padding 0 .3em
 
 	.playing
 		&.medium
@@ -404,6 +578,11 @@ img
 						border-top 5px solid gris_claro
 		.title
 			display none
+
+	.login-form
+		form
+			span
+				left 6.3%
 
 	.isotipo
 		width 122px
