@@ -59,3 +59,14 @@ class SearchPageView(TemplateView):
 	@method_decorator(login_required)
 	def dispatch(self, *args, **kwargs):
 		return super(SearchPageView, self).dispatch(*args, **kwargs)
+
+# Vistas para el manejo de errores 404, 403 y 500
+
+class Error404PageView(TemplateView):
+	tamplate_name = 'error404.html'
+
+class Error403PageView(TemplateView):
+	template_name = 'error403.html'
+
+class Error500PageView(TemplateView):
+	template_name = 'error500.html'

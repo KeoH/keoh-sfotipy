@@ -22,3 +22,7 @@ urlpatterns = patterns('',
     url(r'^playlist/', include('playlists.urls')),
 
 )
+
+handler404 = 'core.views.Error404PageView'
+handler403 = 'core.views.Error403PageView'
+handler500 = 'core.views.Error500PageView'
