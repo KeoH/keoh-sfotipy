@@ -1,0 +1,11 @@
+#header {
+	background: rgba(150, 119, 73, 1);
+}
+
+#header a:link, #header a:visited{
+	text-transform: uppercase;
+}
+
+.module h2, .module caption, .inline-group h2{
+	background: rgba(189, 155, 104, 1);
+}

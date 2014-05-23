@@ -17,3 +17,16 @@ class Album(models.Model):
 		return html
 
 	image_cover.allow_tags = True
+
+class JamendoAlbum(models.Model):
+
+	name	= models.CharField(max_length=255)
+	cover   = models.URLField()
+	release_date = models.DateField()
+	artist_id_jamendo = models.PositiveIntegerField(default=1)
+	artist_name = models.CharField(max_length=255)
+	zip_file = models.URLField()
+
+	def __unicode__(self):
+		return self.name
+

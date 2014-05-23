@@ -1,0 +1,54 @@
+{% load static from staticfiles %}
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Importador</title>
+	<link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
+</head>
+<body>
+	
+	<form action="" method="post">
+		{% csrf_token %}
+		<input type="text" name="datosaenviar" id="datosaenviar" value="Cosas">
+		<input type="submit" class="button" value="Enviar datos">
+	</form>
+
+	<div id="lista-artistas">
+		
+	</div>
+
+
+	{% verbatim plantilla %}
+		
+		<script id="song-template" type="text/x-handlebars-template">
+			<span>{{name}}</span> - <span>{{author}}</span>
+		</script>
+
+		<script id="artist-template" type="text/x-handlebars-template">
+			<div class="large-3 columns panel">
+				<figure><img src="{{image}}" alt=""></figure>
+			</div>
+			<div class="large-9 columns panel">
+				<p>Nombre: {{name}}</p>
+				<p>ID: {{id}}</p>
+				<p>Website: <a href="{{website}}">{{website}}</a> </p>
+				<p>Join date: {{joindate}}</p>
+			</div>
+		</script>
+
+	{% endverbatim plantilla %}
+
+	<script src="{% static 'lib/underscore.js' %}" ></script>
+	<script src="{% static 'lib/jquery.js' %}" ></script>
+	<script src="{% static 'lib/backbone.js' %}" ></script>
+	<script src="{% static 'lib/handlebars.js' %}" ></script>
+	<script src="{% static 'js/foundation.min.js' %}" ></script>
+	<script src="{% static 'js/main.js' %}" ></script>
+
+	<script>
+		
+	</script>
+
+</body>
+</html>

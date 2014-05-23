@@ -9,7 +9,7 @@
 	<secction class="playing small medium large">
 		<div class="music">
 			<figure class="image relative">
-				<img src="http://192.168.1.40:3000/media/albums/tmara-laurel02.jpg" width="320px" height="320px" alt="Tamara Laurel - Ligthning">
+				<img src="{{ track.album.cover.url }}" width="320px" height="320px" alt="{{ track.artist.fullname }} - {{ track.title }}">
 				<div class="actions padding right-text">
 					<a href="#" class="action icon-add"></a>
 					<a href="#" class="action icon-love"></a>
@@ -26,16 +26,19 @@
 							</div>
 						</div>
 					</div>
-					<span class="max">4:12</span>
+					<span class="max">{{ track.duration }}</span>
 				</div>
 				<div class="description center-text">
 					<p class="name">
-						Ligthning
+						{{ track.title }}
 					</p>
 					<p class="author">
-						Tamara Laurel
+						{{ track.artist.fullname }}
 					</p>
 				</div>
+				<audio id="song_file" preload="none">
+					<source src="{{ track.track_field.url }}"></source>
+				</audio>
 				<div class="play center-text padding-tb">
 					<a href="#" class="action gray icon-prev"></a>
 					<a href="#" class="action gray icon-play"></a>
@@ -47,15 +50,17 @@
 		</div>
 		<div class="playlist right">
 			<p class="name">
-				Ligthning
+				{{ track.title }}
 			</p>
 			<p class="author">
-				Tamara Laurel
+				{{ track.artist.fullname }}
 			</p>
 			<ul class="list">
+				{% for pista in pistas %}
+					
 				<li class="item">
 					<span>
-						Pathetic
+						<a href="{% url 'playing' pista.id %}">{{ pista.title }}</a>
 					</span>
 					<span class="right">
 						<a href="#" class="action icon-add gray"></a>
@@ -63,29 +68,56 @@
 						<a href="#" class="action icon-share gray"></a>
 					</span>
 				</li>
-				<li class="item">
-					<span>
-						Lightning
-					</span>
-					<span class="right">
-						<a href="#" class="action icon-add gray"></a>
-						<a href="#" class="action icon-love gray"></a>
-						<a href="#" class="action icon-share gray"></a>
-					</span>
-				</li>
-				<li class="item">
-					<span>
-						Sweet
-					</span>
-					<span class="right">
-						<a href="#" class="action icon-add gray"></a>
-						<a href="#" class="action icon-love gray"></a>
-						<a href="#" class="action icon-share gray"></a>
-					</span>
-				</li>
+
+				{% endfor %}
 			</ul>
 		</div>
 	</secction>
 
+	<script>
+		$(function(){
+			var song = document.getElementById('song_file');
+			var vol = 1;
 
+			$('.icon-prev').click(function(e){
+				e.preventDefault();
+				song.currentTime=0;
+				console.log("Boton prev");
+			});
+			$('.icon-play').click(function(e){
+				e.preventDefault();
+				if(song.paused){
+					song.play();
+				}else{
+					song.pause();
+				}
+				console.log("Boton play");
+			});
+			$('.icon-next').click(function(e){
+				e.preventDefault();
+				console.log("Boton next");
+			});
+			$('.icon-random').click(function(e){
+				e.preventDefault();
+				console.log("Boton random");
+			});
+			$('.icon-vol').click(function(e){
+				e.preventDefault();
+				if(song.volume === 1){
+					song.volume = 0.5;
+					return;
+				}
+				if(song.volume === 0.5){
+					song.volume = 0;
+					return;
+				}
+				if(song.volume === 0){
+					song.volume = 1;
+					return;
+				}
+				
+				console.log("Boton vol");
+			});
+		});
+	</script>
 {% endblock %}

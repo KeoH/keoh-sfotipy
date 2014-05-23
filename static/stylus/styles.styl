@@ -34,7 +34,6 @@ a
 
 .phone-visible-only
 	display block
-
 ul
 	margin 0
 	padding 0
@@ -494,6 +493,14 @@ img
 		font-size 24px
 		padding 0
 
+#acceso
+#registro
+	cursor pointer
+
+
+
+.hidden
+	display none
 
 @media screen and (min-width:480px)
 
@@ -610,12 +617,12 @@ img
 				left 6.3%
 
 	.isotipo
-		width 122px
+		width 200px
 
 	.logo
 		display block
 		overflow hidden
-		padding 1.3em 0
+		padding 1.3em 0 2em 0
 		background white
 
 	.avatar
@@ -664,3 +671,23 @@ img
 			margin 0 auto
 			width 90%
 			overflow hidden
+	.user
+		position relative
+		.username
+			cursor pointer
+	#menu-avatar
+		display none
+		border 1px solid gris_oscuro
+		background gris_mas_claro
+		padding 0.2em 1em
+		position absolute
+		top 2.5em
+		left 0
+		right 0
+		li
+			list-style none
+			text-align center
+		a
+			text-decoration none
+			color gris_oscuro
+

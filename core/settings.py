@@ -8,7 +8,7 @@ SECRET_KEY = secrets.SECRET_KEY
 
 IN_PRODUCTION = False
 
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -33,6 +33,7 @@ INSTALLED_APPS = (
     'playlists',
     'genders',
     'usersong_counts',
+    'importadorJamendo',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -92,9 +93,11 @@ def get_lan_ip():
 
 MY_URL = get_lan_ip()
 
-STATIC_URL = 'http://'+MY_URL+':3000/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'estaticos')
+if DEBUG==True:
+    STATIC_URL = '/static/'
+else:
+    STATIC_URL = 'http://'+MY_URL+':3000/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'estaticos')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -105,14 +108,17 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder"
 )
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+#STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
 if IN_PRODUCTION:
     S3_URL = 'http://keoh-sfotypy.s3.amazonaws.com/'
     MEDIA_URL = S3_URL + 'media/'
 else:
-    MEDIA_URL = 'http://'+MY_URL+':3000/media/'
-    MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
+    if DEBUG == True:
+        MEDIA_URL = '/media/'
+    else:
+        MEDIA_URL = 'http://'+MY_URL+':3000/media/'
+        MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 
 
 TEMPLATE_LOADERS = (
@@ -121,11 +127,6 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
-
-
-
-AUTH_USER_MODEL = 'user_profile.UserProfile'
-
 
 if IN_PRODUCTION:
 

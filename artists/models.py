@@ -50,3 +50,10 @@ class Artist(models.Model):
 	group_or_artist.short_description = "Group or Artist"
 	group_or_artist.admin_order_field = "is_group"
 
+class JamendoArtist(models.Model):
+
+	name = models.CharField(max_length=255)
+	artist_jamendo_id = models.PositiveIntegerField(default=1)
+	website = models.URLField()
+	joindate = models.DateField()
+	image = models.URLField()

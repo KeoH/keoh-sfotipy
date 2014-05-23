@@ -8,7 +8,7 @@
 	<div class="main-container">
 		<section class="container">
 			{% for track in tracks %}
-				<a href="{% url 'playing' %}">	
+				<a href="{% url 'playing' track.id %}">	
 					<article class="song">
 						<figure class="image">
 							<img src="{{ track.album.cover.url }}" witdth="115" height="115" alt="{{ track.title }}">

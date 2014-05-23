@@ -7,9 +7,19 @@
 			</figure>
 			<div class="user right">
 				<figure class="avatar round left">
-					<img src="{{ user.avatar.url }}" alt="avatar" width="38px" height="38px">
+					<img src="{{ user.userprofile.get_avatar }}" alt="avatar" width="38px" height="38px">
 				</figure>
 				<span class="left username">@{{user.username}}</span>
+				<div id="menu-avatar">
+					<ul>
+						<li class="items">
+							<a href="#">Settings</a>
+						</li>
+						<li class="items">
+							<a href="{% url 'logout' %}">Logout</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 			<div class="search right">
 				<form action="" class="relative">
@@ -20,6 +30,20 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+		$('.username').click(function(){
+			var cosa = $('#menu-avatar');
+			if(cosa.css('display')=='none'){
+				console.log("Oculto");
+				cosa.css('display', 'block');
+			}else{
+				console.log("visible");
+				cosa.css('display', 'none')
+			}
+		});
+	</script>
+
 	<a href="#" class="button-menu icon-menu {% if secction_name == 'Artist Profile' %}white-text{% endif %}"></a>
 	{% include "menu.html" %}
 		<div class="title">

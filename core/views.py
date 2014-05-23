@@ -4,12 +4,14 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView, View
+from django.views.generic import ListView, View, DetailView
 from django.views.generic.base import TemplateView
+from django.contrib.auth import login, logout
 
 from artists.models import Artist
+from albums.models import Album
 from tracks.models import Track
-from user_profile.forms import EmailUserCreationForm
+from user_profile.forms import EmailUserCreationForm, UserLoginForm
 
 class HomePageView(View):
 	def get(self, request):
@@ -20,27 +22,42 @@ class HomePageView(View):
 		else:
 			template_name = 'home-without-auth.html'
 			form_usercreation = EmailUserCreationForm()
-			return render(request, template_name, {'form_singup': form_usercreation})
+			form_userlogin = UserLoginForm()
+			return render(request, template_name, {'form_signup': form_usercreation, 'form_signin': form_userlogin})
 
 	def post(self, request):
 
 		if not request.user.is_authenticated():
 			template_name = 'home-without-auth.html'
 			form_usercreation = EmailUserCreationForm(request.POST or None)
+			form_userlogin = UserLoginForm(request.POST or None)
 
 			if form_usercreation.is_valid():
 				form_usercreation.save()
-				return HttpResponseRedirect(reverse('profile:success'))		
+				return HttpResponseRedirect(reverse('home'))		
+
+			if form_userlogin.is_valid():
+				login(request, form_userlogin.get_user())
+			return HttpResponseRedirect(reverse('home'))
 			
-			return render(request, template_name, {'form_singup': form_usercreation})
+			return render(request, template_name, {'form_signup': form_usercreation})
+
+class LogoutView(View):
+	def get(self, request):
+		logout(request)
+		return HttpResponseRedirect(reverse('home'))
 
 
-class PlayingPageView(TemplateView):
+class PlayingPageView(DetailView):
+	model = Track
+	context_object_name = 'track'
 	template_name = 'playing.html'
 
-	@method_decorator(login_required)
-	def dispatch(self, *args, **kwargs):
-		return super(PlayingPageView, self).dispatch(*args, **kwargs)
+	def get_context_data(self, **kwargs):
+		context = super(PlayingPageView, self).get_context_data(**kwargs)
+		track = kwargs['object'] 
+		context['pistas'] = Track.objects.filter(album=track.album.pk).order_by('order')
+		return context
 
 
 class TopHitsView(ListView):
@@ -62,11 +79,11 @@ class SearchPageView(TemplateView):
 
 # Vistas para el manejo de errores 404, 403 y 500
 
-class Error404PageView(TemplateView):
-	tamplate_name = 'error404.html'
+def error404(request):
+	return render(request, 'error404.html')
 
-class Error403PageView(TemplateView):
-	template_name = 'error403.html'
+def error500(request):
+	return render(request, 'error500.html')
 
-class Error500PageView(TemplateView):
-	template_name = 'error500.html'
+def error403(request):
+	return render(request, 'error403.html')

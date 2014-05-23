@@ -23,13 +23,13 @@
 		</div>
 		<div class="login">
 			<ul>
-				<li>
-					<a href="#">
+				<li >
+					<a href="" id="acceder">
 						Acceder
 					</a>
 				</li>
-				<li>
-					<a href="#">
+				<li >
+					<a href="" id="registro">
 						Crea una cuenta
 					</a>
 				</li>
@@ -80,4 +80,26 @@
 		</div>
 		
 	</footer>
+
+	<script>
+
+			$(window).on("ready", function () {
+
+				$('#acceder').on("click", function (e){
+					e.preventDefault();
+					$('#signin-form').toggleClass("hidden");
+					console.log("Accesoooo");
+				});
+
+				$('#registro').on("click", function (e){
+					e.preventDefault();
+					$('#signup-form').toggleClass("hidden");
+					console.log("Registroo");
+				});
+
+
+			});
+
+	</script>
+
 {% endblock %}
