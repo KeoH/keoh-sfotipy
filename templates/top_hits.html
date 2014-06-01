@@ -11,7 +11,7 @@
 				<a href="{% url 'playing' track.id %}">	
 					<article class="song">
 						<figure class="image">
-							<img src="{{ track.album.cover.url }}" witdth="115" height="115" alt="{{ track.title }}">
+							<img src="{{ track.album.get_cover }}" witdth="115" height="115" alt="{{ track.title }}">
 						</figure>
 						<p class="title">
 							{{ track.title }}

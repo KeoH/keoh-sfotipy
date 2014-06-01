@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Gender
+from .serializers import GenderSerializer
 
-# Create your views here.
+class GenderViewSet(viewsets.ModelViewSet):
+	model = Gender
+	serializer_class = GenderSerializer

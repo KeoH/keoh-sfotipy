@@ -10,5 +10,5 @@ class CountSongUser(models.Model):
 	track = models.ForeignKey(Track)
 
 	def __unicode__(self):
-		text = "%s - usuario: %s" %(self.track.title, self.user.username)
+		text = "%s - usuario: %s" %(self.track.title, self.user.user.username)
 		return text

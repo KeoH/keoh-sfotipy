@@ -4,6 +4,7 @@ from albums.models import Album, JamendoAlbum
 from artists.models import Artist, JamendoArtist
 
 from core.settings import STATIC_URL as media
+#from usersong_counts.models import CountSongUser
 
 class Track(models.Model):
 
@@ -16,6 +17,14 @@ class Track(models.Model):
 
 	def __unicode__(self):
 		return self.title
+
+	# def get_listened(self):
+	# 	lis = CountSongUser.objects.filter(track=self.id)
+	# 	total = 0
+	# 	for usuario in lis:
+	# 		total += usuario.count
+	# 	total = int(total)
+	# 	return total
 
 	def audio_track(self):
 		html = '<audio controls preload="none"><source src="%s" type="audio/mpeg"></audio>' % (self.track_field.url)	

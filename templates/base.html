@@ -1,6 +1,6 @@
 {% load static from staticfiles %}
 <!doctype html>
-<html lang="es">
+<html lang="es" ng-app="sfotipy">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -9,12 +9,19 @@
 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 	<script type="text/javascript" src="{% static 'lib/jquery.js' %}"></script>
 </head>
-<body>
-
+<body ng-controller="SectionController as sectionCtrl">
+	<script>
+		var user = {
+			username: "{{user.username}}",
+			avatar: "{{user.userprofile.get_avatar}}"
+		};
+	</script>
 	{% block content %}
-	{% endblock %}
+	{% endblock content%}
 	{% block javascript %}
-	{% endblock %}
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+		<script src="{% static 'js/sfotipyangular.js' %}"></script>
+	{% endblock javascript%}
 {% include 'menu_desplegable.html' %}
 
 </body>

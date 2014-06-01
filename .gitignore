@@ -4,3 +4,4 @@ estaticos/
 *.pyc
 core/secrets.py
 migrations/
+normalize.css

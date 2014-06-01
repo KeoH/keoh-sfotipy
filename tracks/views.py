@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .serializers import TrackSerializer#, TopHitSerializer
+from .models import Track
+#from usersong_counts.models import CountSongUser
 
-# Create your views here.
+class TrackViewSet(viewsets.ModelViewSet):
+	model = Track
+	serializer_class = TrackSerializer
+
+# class TophitsViewSet(viewsets.ModelViewSet):
+# 	model = Track
+# 	serializer_class = TopHitSerializer

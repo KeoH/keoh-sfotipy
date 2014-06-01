@@ -19,6 +19,12 @@ class Country(models.Model):
 	def __unicode__(self):
 		return self.name
 
+	def get_continent(self):
+		for i in continents:
+			if self.continent == i[0]:
+				return i[1]
+		
+
 	class Meta:
 		verbose_name_plural="Countries"
 
@@ -37,6 +43,11 @@ class Artist(models.Model):
 	def fullname(self):
 		return self.first_name +' '+ self.last_name
 
+	def get_profile_image(self):
+		if(self.profile_image):
+			return self.profile_image.url
+		else:
+			return ""
 	def group_or_artist(self):
 		if self.is_group == True:
 			return "Group"

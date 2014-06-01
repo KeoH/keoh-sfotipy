@@ -5,4 +5,154 @@
 
 {% block content %}
 	{% include "header.html" with secction_name="Home"%}
+	{% verbatim %}
+	<section class="container" ng-controller="TophitsController as tophits" ng-show="sectionCtrl.IsSection(1)">
+		<article class="song" ng-repeat="top in tophits.products" ng-click="sectionCtrl.trackdetail(top.id)">
+			<figure class="image">
+				<img ng-src="{{ '/media/'+top.album.cover }}" witdth="115" height="115" alt="{{ top.title }}">
+			</figure>
+			<p class="title">
+				{{ top.title }}
+			</p>
+			<p class="author">
+				{{ top.artist.first_name +" "+ top.artist.last_name }}
+			</p>
+		</article>
+	</section>
+	<section ng-show="sectionCtrl.IsSection(2)">
+		<div>
+			<figure><img src="{{ sectionCtrl.user.avatar }}" alt=""></figure>
+			<p>{{ sectionCtrl.user.username }}</p>
+		</div>
+	</section>
+	<section ng-show="sectionCtrl.IsSection(3)">
+		<p>My Likes</p>
+	</section>
+	<section ng-show="sectionCtrl.IsSection(4)">
+		<p>Playlists</p>
+	</section>
+	<section ng-show="sectionCtrl.IsSection(5)" class="playing small medium large">
+		<div class="music">
+			<figure class="image relative">
+				<img ng-src="{{ sectionCtrl.album.image }}" width="320px" height="320px" alt="{{ sectionCtrl.product.artist.first_name +' '+ sectionCtrl.product.artist.last_name}} - {{ sectionCtrl.product.title }}">
+				<div class="actions padding right-text">
+					<a href="#" class="action icon-add"></a>
+					<a href="#" class="action icon-love"></a>
+					<a href="#" class="action icon-share"></a>
+				</div>
+			</figure>
+			<div class="padding">
+				<div class="progress">
+					<span class="min">0:52</span>
+					<div class="total">
+						<div class="state">
+							<div class="circle">
+								
+							</div>
+						</div>
+					</div>
+					<span class="max">{{ sectionCtrl.product.duration }}</span>
+				</div>
+				<div class="description center-text">
+					<p class="name">
+						{{ sectionCtrl.product.title }}
+					</p>
+					<p class="author">
+						{{ sectionCtrl.product.artist.first_name +" "+ sectionCtrl.product.artist.last_name }}
+					</p>
+				</div>
+				<audio id="song_file" preload="none">
+					<source ng-src="{{ '/media/'+sectionCtrl.product.track_field }}"></source>
+				</audio>
+				<div class="play center-text padding-tb">
+					<a href="#" class="action gray icon-prev"></a>
+					<a href="#" class="action gray icon-play"></a>
+					<a href="#" class="action gray icon-next"></a>
+					<a href="#" class="action gray icon-random"></a>
+					<a href="#" class="action gray icon-vol"></a>
+				</div>
+			</div>
+		</div>
+		<div class="playlist right">
+			<p class="name">
+				{{ sectionCtrl.product.title }}
+			</p>
+			<p class="author">
+				{{ sectionCtrl.product.artist.first_name +" "+ sectionCtrl.product.artist.last_name }}
+			</p>
+			<ul class="list">
+				{% for pista in pistas %}
+					
+				<li class="item">
+					<span>
+						<a href="{% url 'playing' pista.id %}">{{ pista.title }}</a>
+					</span>
+					<span class="right">
+						<a href="#" class="action icon-add gray"></a>
+						<a href="#" class="action icon-love gray"></a>
+						<a href="#" class="action icon-share gray"></a>
+					</span>
+				</li>
+
+				{% endfor %}
+			</ul>
+		</div>
+		<script>
+			$(function(){
+				var song = document.getElementById('song_file');
+				console.log(song);
+				var vol = 1;
+
+				$('.icon-prev').click(function(e){
+					e.preventDefault();
+					song.currentTime=0;
+					console.log("Boton prev");
+				});
+				$('.icon-play').click(function(e){
+					e.preventDefault();
+					if(song.paused){
+						song.play();
+					}else{
+						song.pause();
+					}
+					console.log("Boton play");
+				});
+				$('.icon-next').click(function(e){
+					e.preventDefault();
+					console.log("Boton next");
+				});
+				$('.icon-random').click(function(e){
+					e.preventDefault();
+					console.log("Boton random");
+				});
+				$('.icon-vol').click(function(e){
+					e.preventDefault();
+					if(song.volume === 1){
+						song.volume = 0.5;
+						return;
+					}
+					if(song.volume === 0.5){
+						song.volume = 0;
+						return;
+					}
+					if(song.volume === 0){
+						song.volume = 1;
+						return;
+					}
+					
+					console.log("Boton vol");
+				});
+			});
+		</script>
+
+	</section>
+
+	{% endverbatim %}
+	<footer>
+	<div class="footer">
+		<div class="left"><a href="#" class="icon-sfotipy"></a></div>
+		<div class="right"><a href="#">about us</a><a href="#">legal</a></div>
+	</div>
+		
+	</footer>
 {% endblock %}

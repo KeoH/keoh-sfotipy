@@ -12,4 +12,4 @@ class Playlist(models.Model):
 	followers = models.ManyToManyField(UserProfile,related_name='+', blank=True)
 
 	def __unicode__(self):
-		return self.name + " - by:" + self.owner.username
+		return self.name + " - by:" + self.owner.user.username

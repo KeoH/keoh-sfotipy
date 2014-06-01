@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import CountSongUser
+from .serializers import CountSongUserSerializer
 
-# Create your views here.
+class CountSongUserViewSet(viewsets.ModelViewSet):
+	model = CountSongUser
+	serializer_class = CountSongUserSerializer

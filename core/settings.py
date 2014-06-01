@@ -8,7 +8,7 @@ SECRET_KEY = secrets.SECRET_KEY
 
 IN_PRODUCTION = False
 
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -116,6 +116,8 @@ if IN_PRODUCTION:
 else:
     if DEBUG == True:
         MEDIA_URL = '/media/'
+        MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
     else:
         MEDIA_URL = 'http://'+MY_URL+':3000/media/'
         MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
@@ -136,3 +138,9 @@ if IN_PRODUCTION:
     AWS_ACCESS_KEY_ID = secrets.AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY = secrets.AWS_SECRET_ACCESS_KEY
     AWS_STORAGE_BUCKET_NAME = secrets.AWS_STORAGE_BUCKET_NAME
+E_BUCKET_NAME = secrets.AWS_STORAGE_BUCKET_NAME
+
+REST_FRAMEWORK = {
+    #'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    #'PAGINATE_BY': 10
+}

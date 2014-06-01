@@ -1,23 +1,23 @@
 {% load static from staticfiles %}
 	<nav class="menu">
 		<ul class="list center-block wrap">
-			<li class="items">
-				<a href="{% url 'tophits' %}">
+			<li class="items" ng-click="sectionCtrl.setSection(1)">
+				<a href="">
 					Top Hits
 				</a>
 			</li>
-			<li class="items">
-				<a href="#">
+			<li class="items" ng-click="sectionCtrl.setSection(2)">
+				<a href="">
 					Profile
 				</a>
 			</li>
-			<li class="items">
-				<a href="#">
+			<li class="items" ng-click="sectionCtrl.setSection(3)">
+				<a href="">
 					My likes
 				</a>
 			</li>
-			<li class="items">
-				<a href="#">
+			<li class="items" ng-click="sectionCtrl.setSection(4)">
+				<a href="">
 					Playlists
 				</a>
 			</li>

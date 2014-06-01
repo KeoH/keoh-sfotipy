@@ -12,6 +12,13 @@ class Album(models.Model):
 	def __unicode__(self):
 		return self.title
 
+	def get_cover(self):
+		if(self.cover):
+			return self.cover.url
+		else:
+			return ""
+
+
 	def image_cover(self):
 		html = '<figure><img width="60px" height="60px" src="%s"></figure>' % (self.cover.url)
 		return html

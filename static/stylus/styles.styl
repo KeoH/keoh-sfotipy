@@ -38,8 +38,18 @@ ul
 	margin 0
 	padding 0
 
+.left
+	float left
+.right
+	float right
+
 figure
 	margin 0
+	width 100%
+	.right
+		float none
+	.left
+		float none
 img
 	vertical-align top
 
@@ -64,10 +74,6 @@ img
 .playlist
 	display none
 
-.left
-	float left
-.right
-	float right
 
 .actions
 	background rgba(black, .3)
@@ -439,7 +445,7 @@ img
 		padding 1em 0
 		&:last-child
 			border-top 1px solid gris_mas_claro
-			width 80%
+			//width 80%
 			margin 0 auto
 			color gris_claro
 			text-align center
@@ -610,6 +616,7 @@ img
 						border-top 5px solid gris_claro
 		.title
 			display none
+	
 
 	.login-form
 		form
@@ -690,4 +697,52 @@ img
 		a
 			text-decoration none
 			color gris_oscuro
+	.home-info
+		text-align center
+		p
+			text-align left
+			color gris_oscuro
+			font-size 22px
+			&:last-child
+				color gris_claro
+				font-size 19px	
+	.empiezaya
+		display none
 
+	.consejo
+		margin 0 auto
+		padding 0
+		width 70%
+		figure
+			width 48%
+			vertical-align top
+			display inline-block
+	
+			.left
+				float left
+				padding-right 2%
+
+			.right
+				float right
+				padding-left 2%
+			img
+				border-radius 50%
+				
+		.texto_consejo
+			
+			width 44%
+			vertical-align top
+			display inline-block			
+			margin 0
+			padding 0 4%
+
+	footer
+		position fixed
+		width 100%
+		left 0
+		bottom 0
+		.left
+			margin-left 3em
+		.right
+			float left
+			margin-left 1em
